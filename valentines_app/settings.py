@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-i7^y9(xlz_^tm6g3r%g5p^5vl&cvk**x3ll4j!a*eih#8dlv$x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['valentines-app.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
