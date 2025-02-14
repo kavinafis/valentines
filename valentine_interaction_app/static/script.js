@@ -4,28 +4,28 @@ const valentineImage = document.getElementById('valentineImage');
 const h1 = document.querySelector('h1');
 
 // Set initial image size
-valentineImage.style.width = '350px';
+valentineImage.style.width = '250px';
 valentineImage.style.height = 'auto';
 
 const imageUrls = [
-    "/static/images/valentine1.jpg",
-    "/static/images/valentine2.jpg", 
-    "/static/images/valentine3.jpg",
-    "/static/images/valentine4.jpg",
-    "/static/images/valentine5.jpg",
-    "/static/images/valentine6.jpg",
-    "/static/images/valentine7.jpg",
-    "/static/images/valentine8.jpg",
-    "/static/images/valentine9.jpg",
-    "/static/images/valentine10.jpg",
-    "/static/images/valentine11.jpg"
+    "/static/images/valentine1.webp",
+    "/static/images/valentine2.webp", 
+    "/static/images/valentine3.webp",
+    "/static/images/valentine4.webp",
+    "/static/images/valentine5.webp",
+    "/static/images/valentine6.webp",
+    "/static/images/valentine7.webp",
+    "/static/images/valentine8.webp",
+    "/static/images/valentine9.webp",
+    "/static/images/valentine10.webp",
+    "/static/images/valentine11.webp"
 ];
 
 const noTexts = [
     "Are you sure pookie?",
-    "No second thoughts bbpoo?",
-    "Maybe reconsider love?",
-    "Are you sure silly kitty?",
+    "No second thoughts?",
+    "Maybe reconsider?",
+    "Are you completely certain bbpoo?",
     "Think about it!",
     "Is this your choice FR?",
     "One more chance?",

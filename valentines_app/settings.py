@@ -108,5 +108,10 @@ STATICFILES_DIRS = [
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# WebP MIME type configuration
+WHITENOISE_MIMETYPES = {
+    '.webp': 'image/webp',
+}
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
