@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Will You Be My Valentine?</title>
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .btn {
+                width: 100%;
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?💕</h1>
+        <div class="image-container">
+            <img id="valentineImage" src="{% static 'images/valentine1.jpg' %}" alt="Valentine Image">
+        </div>
+        <div class="buttons">
+            <button id="yesButton" class="btn yes-btn">Yes! 😍</button>
+            <button id="noButton" class="btn no-btn">No 😢</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+
+    <script>
+        // Adjust button movement for mobile
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            const noButton = document.getElementById('noButton');
+            noButton.addEventListener('click', function() {
+                const maxX = window.innerWidth - this.offsetWidth;
+                const maxY = window.innerHeight - this.offsetHeight;
+                const x = Math.random() * maxX;
+                const y = Math.random() * maxY;
+                this.style.position = 'absolute';
+                this.style.left = `${x}px`;
+                this.style.top = `${y}px`;
+            });
+        }
+    </script>
+
+</body>
+</html>
