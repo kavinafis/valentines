@@ -3,9 +3,8 @@ const noButton = document.getElementById('noButton');
 const valentineImage = document.getElementById('valentineImage');
 const h1 = document.querySelector('h1');
 
-
 // Set initial image size
-valentineImage.style.width = '180px';
+valentineImage.style.width = '350px';
 valentineImage.style.height = 'auto';
 
 const imageUrls = [
@@ -24,9 +23,9 @@ const imageUrls = [
 
 const noTexts = [
     "Are you sure pookie?",
-    "No second thoughts?",
-    "Maybe reconsider?",
-    "Are you completely certain bbpoo?",
+    "No second thoughts bbpoo?",
+    "Maybe reconsider love?",
+    "Are you sure silly kitty?",
     "Think about it!",
     "Is this your choice FR?",
     "One more chance?",
@@ -36,7 +35,6 @@ const noTexts = [
 ];
 
 let currentImageIndex = 0;
-let yesSize = 1;
 let noIndex = 0;
 
 function showNextImage() {
@@ -62,77 +60,24 @@ yesButton.addEventListener('click', () => {
     yesButton.style.display = 'none';
     noButton.style.display = 'none';
     valentineImage.style.display = 'none';
-
 });
-
 
 noButton.addEventListener('click', () => {
     showNextImage();
     
-    // Change no button text and reduce size
+    // Change no button text
     noButton.textContent = noTexts[noIndex % noTexts.length];
-    noButton.style.transform = 'scale(0.8)';
-    noButton.style.transition = 'transform 0.3s ease';
-
-    // Move no button to random position within container bounds
-    const container = document.querySelector('.container');
-    const containerRect = container.getBoundingClientRect();
     
-    const padding = 20; // Minimum padding from edges and other elements
-    const maxX = containerRect.width - noButton.offsetWidth - padding;
-    const maxY = containerRect.height - noButton.offsetHeight - padding;
-    
-    // Ensure button stays within visible bounds and doesn't overlap other elements
-    const minX = padding;
-    const minY = padding;
-    
-    let x, y;
-    let attempts = 0;
-    const maxAttempts = 100;
-    let overlap = true;
-    
-    while (overlap && attempts < maxAttempts) {
-        x = minX + Math.random() * maxX;
-        y = minY + Math.random() * maxY;
-        
-        // Adjust position if it would extend beyond container bounds
-        x = Math.min(x, containerRect.width - noButton.offsetWidth - padding);
-        y = Math.min(y, containerRect.height - noButton.offsetHeight - padding);
-        
-        noButton.style.position = 'absolute';
-        noButton.style.left = `${x}px`;
-        noButton.style.top = `${y}px`;
-        
-        // Check for overlaps with other elements
-        const elements = [yesButton, valentineImage, h1];
-        overlap = elements.some(el => {
-            const elRect = el.getBoundingClientRect();
-            const noButtonRect = noButton.getBoundingClientRect();
-            const elementPadding = 20; // Minimum distance from other elements
-            
-            return !(noButtonRect.right + elementPadding < elRect.left || 
-                   noButtonRect.left - elementPadding > elRect.right ||
-                   noButtonRect.bottom + elementPadding < elRect.top ||
-                   noButtonRect.top - elementPadding > elRect.bottom);
-        });
-        
-        attempts++;
-    }
-    
-    if (attempts === maxAttempts) {
-        // Fallback position if no valid position found
-        noButton.style.left = `${minX}px`;
-        noButton.style.top = `${minY}px`;
-    }
-
-
-
+    // Reduce button size and font size
+    const scale = Math.max(0.5, 1 - (noIndex * 0.1));
+    noButton.style.transform = `scale(${scale})`;
+    noButton.style.fontSize = `${scale * 100}%`;
+    noButton.style.transition = 'transform 0.3s ease, font-size 0.3s ease';
 
     noIndex++;
     
     // Only hide after exactly 10 clicks
-    if (noIndex >= 10) {
+    if (noIndex === 10) {
         noButton.style.display = 'none';
     }
-
 });
